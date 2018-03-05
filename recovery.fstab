@@ -1,0 +1,33 @@
+/boot		emmc	/dev/block/bootdevice/by-name/boot
+/recovery	emmc	/dev/block/bootdevice/by-name/recovery	flags=backup=1
+/system		ext4	/dev/block/bootdevice/by-name/system
+/system_image	emmc	/dev/block/bootdevice/by-name/system
+/data		ext4	/dev/block/bootdevice/by-name/userdata	flags=encryptable=footer;length=-16384
+/cache		ext4	/dev/block/bootdevice/by-name/cache
+/persist        ext4    /dev/block/bootdevice/by-name/persist	flags=backup=1;display="Persist"
+/external_sd    vfat    /dev/block/mmcblk1p1 /dev/block/mmcblk1        flags=storage;wipeingui;removable;encryptable=footer;length=-16384
+/usb-otg        auto      /dev/block/sda1 		flags=storage;wipeingui;removable
+
+# For bootloader commands to recovery
+/misc		emmc	/dev/block/bootdevice/by-name/misc
+
+# BootLoader / Firmware
+/aboot		emmc	/dev/block/bootdevice/by-name/aboot	flags=backup=1;display="BootLoader/Firmware"
+/cmnlib		emmc	/dev/block/bootdevice/by-name/cmnlib	flags=backup=1;subpartitionof=/aboot
+/cmnlib64		emmc	/dev/block/bootdevice/by-name/cmnlib64	flags=backup=1;subpartitionof=/aboot
+/devcfg		emmc	/dev/block/bootdevice/by-name/devcfg	flags=backup=1;subpartitionof=/aboot
+/dsp		emmc	/dev/block/bootdevice/by-name/dsp	flags=backup=1;subpartitionof=/aboot
+/keymaster		emmc	/dev/block/bootdevice/by-name/keymaster	flags=backup=1;subpartitionof=/aboot
+/rpm		emmc	/dev/block/bootdevice/by-name/rpm	flags=backup=1;subpartitionof=/aboot
+/sbl1		emmc	/dev/block/bootdevice/by-name/sbl1	flags=backup=1;subpartitionof=/aboot
+/splash		emmc	/dev/block/bootdevice/by-name/splash	flags=backup=1;subpartitionof=/aboot
+/tz		emmc	/dev/block/bootdevice/by-name/tz	flags=backup=1;subpartitionof=/aboot
+
+# Modem
+/modem		emmc	/dev/block/bootdevice/by-name/modem	flags=backup=1;display="Modem"
+
+# EFS backup/restore
+/efs1		emmc	/dev/block/bootdevice/by-name/modemst1	flags=backup=1;display="EFS"
+/efs2		emmc	/dev/block/bootdevice/by-name/modemst2	flags=backup=1;subpartitionof=/efs1
+/efsg		emmc	/dev/block/bootdevice/by-name/fsg	flags=backup=1;subpartitionof=/efs1
+/efsc		emmc	/dev/block/bootdevice/by-name/fsc	flags=backup=1;subpartitionof=/efs1
